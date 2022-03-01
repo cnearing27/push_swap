@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "checker.h"
 
-int	get_solution(int	fd, char	**lines)
+char	**get_solution(int	fd)
 {
 	char	*curr_line;
 	char	*outstr;
+	char	**lines;
 	int		i;
 
 	outstr = NULL;
@@ -25,11 +26,5 @@ int	get_solution(int	fd, char	**lines)
 	close(fd);
 	free(curr_line);
 	lines = ft_split(outstr, '\n');
-	i = 0;
-	while (lines[i])
-	{
-		printf("%s\n", lines[i]);
-		i++;
-	}
-	return (i);
+	return (lines);
 }

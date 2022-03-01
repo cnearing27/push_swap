@@ -84,7 +84,7 @@ char	**ft_split(char	*s, char	c)
 		}
 	}
 	res = (char **)malloc(sizeof(char *) * (count_arr + 1));
-	ft_mal(res, s, c);
+	ft_mal(res,s, c);
 	if (!res)
 		return (NULL);
 	return (res);

@@ -1,3 +1,5 @@
+#include "./checker/checker.h"
+
 int	ft_atoi(const char	*str)
 {
 	int				i;
@@ -70,13 +72,13 @@ int	check_no_repeat(int	argc, int	arr[argc])
 	return (1);
 }
 
-int	check_args(int	argc, char	**argv, int	arr[argc - 1])
+int	check_args(int	argc, char	**argv, int	*arr)
 {
 	int	i;
 	int	j;
 
-	j = 0;
 	i = 1;
+	j = 0;
 	if (argc <= 1)
 		return (0);
 	while (argv[i])
@@ -84,10 +86,8 @@ int	check_args(int	argc, char	**argv, int	arr[argc - 1])
 		if (is_integer(argv[i]) == 1)
 		{
 			arr[j] = ft_atoi(argv[i]);
-			if (arr[j] <= -2147483648 || arr[j] >= 2147483647)
-				return (0);
-			i++;
 			j++;
+			i++;
 		}
 		else
 			return (0);
