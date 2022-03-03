@@ -2,9 +2,11 @@
 
 void	print_list(t_list *list)
 {
-	if(list != NULL)
+	if (list)
 	{
-		printf("%s\n", list -> command);
+		ft_putstr(list -> command);
+		if (list -> next)
+			write(1, "\n", 1);
 		print_list(list -> next);
 	}
 }

@@ -2,13 +2,20 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> //убрать
 
 typedef struct s_list
 {
 	char			*command;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct		s_steps
+{
+	int	count_a;
+	int	count_b;
+	int	dest_a;
+	int	dest_b;
+}	t_steps;
 
 t_list	*ft_lstnew(char	*command);
 void	ft_lstadd_back(t_list	**lst, t_list	*new);
@@ -23,4 +30,18 @@ void	do_rra(int	*arr, int	*len, t_list **solution, char	*op);
 void	do_rrr(int	**arr, int	*a_len, int *b_len, t_list **solution);
 void	print_list(t_list *list);
 t_list	*solve(int	**arr, int	a_len);
+int		*sort_array(int *arr, int *a_len);
+t_list	*big_sort(int	**arr, int	*a_len);
+int		ft_abs(int a);
+int		same_sign(int a, int b);
+void	ft_putstr(char	*str);
+int		*find_keys(int	*arr, int	*a_len);
+int		minimum(int	*arr, int	*len);
+void	rotate_for_push_both(int **arr, int *a_len, int	*b_len, int steps, t_list *sol);
+void	rotate_a(int *arr, int *a_len, int steps, t_list *sol);
+void	rotate_b(int *arr, int *b_len, int steps, t_list *sol);
+int		find_closest_big(int *arr, int *a_len, int val);
+int		count_steps_to_top(int	*arr, int	arr_size, int	val);
+int		get_current_pos(int	*arr, int	arr_size, int	val);
+int		count_correct_position(int	**arr, int *a_len, int *b_len, int	val);
 #endif

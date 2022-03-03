@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "checker.h"
 
 int	*ppush(int *arr, int b, int *len)
 {
@@ -35,7 +35,7 @@ int	*delete_first(int *arr, int *len)
 	return (new_arr);
 }
 
-int	**do_pa(int **arr, int	*a_len, int *b_len, t_list **solution)
+int	**do_pa(int **arr, int	*a_len, int *b_len)
 {
 	int	**arr2;
 
@@ -49,11 +49,10 @@ int	**do_pa(int **arr, int	*a_len, int *b_len, t_list **solution)
 	arr2[0] = ppush(arr[0], arr[1][0], a_len);
 	arr2[1] = delete_first(arr[1], b_len);
 	free(arr);
-	ft_lstadd_back(solution, ft_lstnew("pa"));
 	return (arr2);
 }
 
-int	**do_pb(int **arr, int	*a_len, int *b_len, t_list **solution)
+int	**do_pb(int **arr, int	*a_len, int *b_len)
 {
 	int	**arr2;
 
@@ -67,6 +66,5 @@ int	**do_pb(int **arr, int	*a_len, int *b_len, t_list **solution)
 	arr2[1] = ppush(arr[1], arr[0][0], b_len);
 	arr2[0] = delete_first(arr[0], a_len);
 	free(arr);
-	ft_lstadd_back(solution, ft_lstnew("pb"));
 	return (arr2);
 }
