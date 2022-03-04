@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_solution.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:20:16 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 20:05:03 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "checker.h"
 
@@ -10,7 +22,7 @@ char	**get_solution(int	fd)
 
 	outstr = NULL;
 	curr_line = malloc(sizeof(char) * 2);
-	lines = malloc(sizeof(char	*));
+	lines = NULL;
 	i = 1;
 	while (i)
 	{
@@ -23,8 +35,8 @@ char	**get_solution(int	fd)
 		curr_line[i] = '\0';
 		outstr = ft_strcat(outstr, curr_line);
 	}
-	close(fd);
 	free(curr_line);
 	lines = ft_split(outstr, '\n');
+	free(outstr);
 	return (lines);
 }

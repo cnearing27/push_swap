@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:20:02 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 20:08:00 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	**mid_to_top(int	**arr, int	*a_len, int	*b_len, int	mid, t_list **sol)
+int	**mid_to_top(int **arr, int *a_len, int *b_len, int mid, t_list **sol)
 {
 	int	steps;
 	int	i;
@@ -68,22 +80,28 @@ int	**large_push_min_flag(int **arr, int *a_len, int *b_len, int	*flags, t_list 
 {
 	int	steps[2];
 	int	min_flag_ind;
+	int	sign;
 
 	min_flag_ind = minimum(flags, b_len);
 	steps[1] = count_steps_to_top(arr[1], *b_len, arr[1][min_flag_ind]);
 	steps[0] = count_steps_to_top(arr[0], *a_len, find_closest_big(arr[0], a_len, arr[1][min_flag_ind]));
+//	printf("A will be rotated: %d, B will be rotated: %d", steps[0], steps[1]);
 	if ((steps[0] > 0 && steps[1] > 0) || (steps[0] < 0 && steps[1] < 0))
 	{
+		if (steps[0] > 0)
+			sign = 1;
+		else
+			sign = -1;
 		if (ft_abs(steps[0]) >= ft_abs(steps[1]))
 		{
 			rotate_for_push_both(arr, a_len, b_len, steps[1], sol);
-			steps[0] += ft_abs(steps[1]);
+			steps[0] = (ft_abs(steps[0]) - ft_abs(steps[1])) * sign;
 			steps[1] = 0;
 		}
 		else
 		{
 			rotate_for_push_both(arr, a_len, b_len, steps[0], sol);
-			steps[1] += ft_abs(steps[0]);
+			steps[1] = (ft_abs(steps[1]) - ft_abs(steps[0])) * sign;
 			steps[0] = 0;
 		}
 	}
@@ -113,6 +131,8 @@ t_list	*big_sort(int	**arr, int	*a_len)
 	}
 	rotate_a(arr[0], a_len, count_steps_to_top(arr[0], *a_len, keys[0]), sol);
 	free(keys);
-	free(flags);
+	free(arr[0]);
+	free(arr[1]);
+	free(arr);
 	return (sol);
 }

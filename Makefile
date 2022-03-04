@@ -18,7 +18,6 @@ SRCS_CH	=	bonus/main.c \
 			bonus/operations3.c \
 			bonus/get_solution.c \
 			bonus/ft_split.c \
-			bonus/get_next_line.c \
 			bonus/get_next_line_utils.c
 
 HEADERS		= mandatoy/push_swap.h \
@@ -33,14 +32,18 @@ NAME_CH		= checker
 CC			= gcc
 RM			= rm -f
 FLAGS		= -Wall -Wextra -Werror -I.
+# FLAGS		= -g -fsanitize=address -Wall -Wextra -Werror -I. 
+
+
+all:	$(NAME_PS)
 
 $(NAME_PS):		$(OBJS_PS)
 			$(CC) -o $(NAME_PS) $(OBJS_PS)
 
-$(NAME_CH):		$(OBJS_CH)
-			$(CC) -o $(NAME_CH) $(OBJS_CH)
+bonus: $(NAME_CH)
 
-all:	$(NAME_PS) $(NAME_CH)
+$(NAME_CH):		$(OBJS_CH)
+			$(CC) $(FLAGS) -o $(NAME_CH) $(OBJS_CH)
 
 %.o:			%.c $(HEADERS)
 			$(CC) $(FLAGS) -c $< -o $@
@@ -61,6 +64,6 @@ fclean_checker:		clean_checker
 
 fclean:	fclean_checker fclean_push_swap
 
-re:		fclean all
+re:		fclean all bonus
 
 .PHONY: all clean fclean re

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:19:52 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 19:19:53 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	print_list(t_list *list)
@@ -5,10 +17,27 @@ void	print_list(t_list *list)
 	if (list)
 	{
 		ft_putstr(list -> command);
-		if (list -> next)
-			write(1, "\n", 1);
+		write(1, "\n", 1);
 		print_list(list -> next);
 	}
+}
+
+void	ft_lstclear(t_list	**lst)
+{
+	t_list	*el;
+	t_list	*lst_copy;
+
+	if (!lst || !*lst)
+		return ;
+	lst_copy = *lst;
+	while (lst_copy)
+	{
+		el = lst_copy->next;
+		lst_copy->command = NULL;
+		free(lst_copy);
+		lst_copy = el;
+	}
+	*lst = NULL;
 }
 
 t_list	*ft_lstnew(char	*command)

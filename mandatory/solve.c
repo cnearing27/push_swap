@@ -25,6 +25,7 @@ void	a_sort_three(int	*arr, t_list **solution, int	*a_len)
 	sorted_a_arr = sort_array(arr, a_len);
 	mid = sorted_a_arr[1];
 	max = sorted_a_arr[2];
+	free(sorted_a_arr);
 	if (arr[0] == max)
 		do_ra(arr, a_len, solution, "ra");
 	if (arr[0] == mid)
@@ -40,7 +41,6 @@ void	a_sort_three(int	*arr, t_list **solution, int	*a_len)
 		do_rra(arr, a_len, solution, "rra");
 		do_sa(arr, a_len, solution, "sa");
 	}
-	free(sorted_a_arr);
 }
 
 void	b_sort_three(int	*arr, t_list **solution, int	*b_len)
@@ -52,6 +52,7 @@ void	b_sort_three(int	*arr, t_list **solution, int	*b_len)
 	sorted_a_arr = sort_array(arr, b_len);
 	mid = sorted_a_arr[1];
 	max = sorted_a_arr[2];
+	free(sorted_a_arr);
 	if (arr[0] == max)
 		do_ra(arr, b_len, solution, "rb");
 	if (arr[0] == mid)
@@ -67,7 +68,6 @@ void	b_sort_three(int	*arr, t_list **solution, int	*b_len)
 		do_rra(arr, b_len, solution, "rrb");
 		do_sa(arr, b_len, solution, "sb");
 	}
-	free(sorted_a_arr);
 }
 
 t_list	*sort_five(int	**arr, int	*a_len, int min, int max)
@@ -82,6 +82,7 @@ t_list	*sort_five(int	**arr, int	*a_len, int min, int max)
 			arr = do_pb(arr, a_len, &b_len, &solution);
 		else
 			do_ra(arr[0], a_len, &solution, "ra");
+		
 	}
 	a_sort_three(arr[0], &solution, a_len);
 	b_sort_three(arr[1], &solution, &b_len);
@@ -94,6 +95,9 @@ t_list	*sort_five(int	**arr, int	*a_len, int min, int max)
 		do_sa(arr[0], a_len, &solution, "sa");
 		do_ra(arr[0], a_len, &solution, "ra");
 	}
+	free(arr[0]);
+	free(arr[1]);
+	free(arr);
 	return (solution);
 }
 
@@ -113,5 +117,6 @@ t_list	*solve(int	**arr, int	a_len)
 		sol = sort_five(arr, &a_len, sorted[0], sorted[a_len - 1]);
 	else
 		sol = big_sort(arr, &a_len);
+	free(sorted);
 	return (sol);
 }

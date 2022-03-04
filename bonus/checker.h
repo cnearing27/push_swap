@@ -4,6 +4,7 @@
 # include <stdio.h>		//не забыть убрать))
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 int					check_args(int	argc, char	**argv, int	*arr);
 char				*get_next_line(int	fd);
@@ -21,5 +22,6 @@ void				do_ra(int *arr, int *len);
 void				do_rr(int	**arr, int	*a_len, int *b_len);
 void				do_rra(int	*arr, int	*len);
 void				do_rrr(int	**arr, int	*a_len, int *b_len);
-void				freee(int	i, char	**res);
+void				freee(char	**res);
+void				freee_int(int	**res);
 #endif

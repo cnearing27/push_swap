@@ -21,7 +21,7 @@ int	check_solution(char **sol, int	**arr, int	a_len)
 	int	i;
 	int	b_len;
 
-	if (a_len == 1 && !sol)
+	if (a_len == 1 && !sol[0])
 		return (1);
 	else if (a_len == 1 && sol)
 		return (0);
@@ -32,16 +32,15 @@ int	check_solution(char **sol, int	**arr, int	a_len)
 		arr = do_op(sol[i], arr, &a_len, &b_len);
 		i++;
 	}
-	freee(i, sol);
 	i = 1;
 	while (i < a_len)
 	{
 		if (arr[0][i] > arr[0][i - 1])
 			i++;
 		else
-			return (0);
+			break;
 	}
-	if (b_len == 0)
+	if (b_len == 0 && i == a_len)
 		return (1);
 	return (0);
 }
@@ -50,6 +49,8 @@ int	check_right_args(char	**sol)
 {
 	int	j;
 
+	if (!sol)
+		return (1);
 	j = 0;
 	while (sol[j])
 	{
@@ -75,26 +76,31 @@ int	main(int	argc, char	**argv)
 {
 	char	**sol;
 	int		**arr;
+	int	j;
 
+	j = 0;
 	arr = malloc(sizeof (int *) * 2);
 	arr[0] = (int *)malloc(sizeof(int) * (argc - 1));
 	arr[1] = NULL;
 	sol = NULL;
 	if (check_args(argc, argv, arr[0]) == 1)
 	{
-//		sol = get_solution(open("ex.txt", O_RDONLY)); // не забыть поменять файл на фд = 0;
 		sol = get_solution(0);
+		j = 0;
 		if (check_right_args(sol) == 1)
 		{
 			if (check_solution(sol, arr, argc - 1) == 1)
 				write(1, "OK\n", 3);
 			else
 				write(1, "KO\n", 3);
-			free(arr[0]);
-			return (0);
 		}
+		freee(sol);
+		freee_int(arr);
 	}
-	write (2, "Error\n", 6);
-	free(arr[0]);
+	else
+	{
+		freee_int(arr);
+		write (2, "Error\n", 6);
+	}
 	return (0);
 }

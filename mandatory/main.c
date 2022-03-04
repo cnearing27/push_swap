@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:19:49 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 19:57:08 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "push_swap.h"
 
@@ -18,12 +30,9 @@ int	main(int	argc, char	**argv)
 	{
 		sol = solve(arr, argc - 1);
 		print_list(sol);
+		ft_lstclear(&sol);
 	}
 	else
 		write (2, "Error\n", 6);
-	free(arr[0]);
-	free(arr[1]);
-	free(arr);
-	free(sol);
 	return (0);
 }

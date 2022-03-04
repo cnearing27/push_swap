@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations3.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:19:41 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 19:19:42 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	do_ra(int *arr, int *len, t_list **solution, char	*op)
@@ -12,13 +24,14 @@ void	do_ra(int *arr, int *len, t_list **solution, char	*op)
 		i++;
 	}
 	arr[i] = temp;
-	ft_lstadd_back(solution, ft_lstnew(op));
+	if (op)
+		ft_lstadd_back(solution, ft_lstnew(op));
 }
 
 void	do_rr(int	**arr, int	*a_len, int *b_len, t_list **solution)
 {
-	do_ra(arr[0], a_len, solution, "");
-	do_ra(arr[1], b_len, solution, "");
+	do_ra(arr[0], a_len, solution, NULL);
+	do_ra(arr[1], b_len, solution, NULL);
 	ft_lstadd_back(solution, ft_lstnew("rr"));
 }
 
@@ -33,12 +46,13 @@ void	do_rra(int	*arr, int	*len, t_list **solution, char	*op)
 	}
 	arr[0] = temp;
 	i = 0;
-	ft_lstadd_back(solution, ft_lstnew(op));
+	if (op)
+		ft_lstadd_back(solution, ft_lstnew(op));
 }
 
 void	do_rrr(int	**arr, int	*a_len, int *b_len, t_list **solution)
 {
-	do_rra(arr[0], a_len, solution, "");
-	do_rra(arr[1], b_len, solution, "");
+	do_rra(arr[0], a_len, solution, NULL);
+	do_rra(arr[1], b_len, solution, NULL);
 	ft_lstadd_back(solution, ft_lstnew("rrr"));
 }

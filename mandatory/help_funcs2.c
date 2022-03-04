@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_funcs2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:19:56 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 19:19:57 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	*find_keys(int	*arr, int	*a_len)
@@ -10,6 +22,7 @@ int	*find_keys(int	*arr, int	*a_len)
 	keys[0] = sorted[0];
 	keys[1] = sorted[(*a_len - 1) / 2];
 	keys[2] = sorted[*a_len - 1];
+	free(sorted);
 	return (keys);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 19:20:25 by cnearing          #+#    #+#             */
+/*   Updated: 2022/03/04 19:20:26 by cnearing         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 char	*new_string(char	*s, char	c, int	i)
@@ -23,12 +35,15 @@ char	*new_string(char	*s, char	c, int	i)
 	return (str);
 }
 
-void	freee(int	i, char	**res)
+void	freee(char	**res)
 {
-	while (i > 0)
+	int	i;
+
+	i = 0;
+	while (res[i])
 	{
-		i--;
 		free(res[i]);
+		i++;
 	}
 	free(res);
 }
@@ -51,7 +66,7 @@ void	ft_mal(char	**res, char	*s, char	c)
 			res[i] = new_string(s, c, k);
 			if (!res[i])
 			{
-				freee(i, res);
+				freee(res);
 				return ;
 			}
 			i++;

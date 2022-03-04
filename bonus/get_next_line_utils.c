@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cnearing <cnearing@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 20:14:38 by marvin            #+#    #+#             */
-/*   Updated: 2021/12/05 20:14:38 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/04 19:20:22 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-unsigned long long	ft_strlen(char	*str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strcpy(char *dest, char *src, int	i)
 {
@@ -76,4 +66,11 @@ char	*ft_strcat(char	*dest, char	*src)
 	ret[i] = '\0';
 	free(dest);
 	return (ret);
+}
+
+void	freee_int(int	**res)
+{
+	free(res[0]);
+	free(res[1]);
+	free(res);
 }
