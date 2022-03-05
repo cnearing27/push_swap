@@ -1,5 +1,4 @@
 SRCS_PS	= 	mandatory/main.c \
-			mandatory/list_functions.c \
 			check_args.c \
 			mandatory/operations1.c \
 			mandatory/operations2.c \

@@ -6,7 +6,7 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:56 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:19:57 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/04 20:43:14 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	minimum(int	*arr, int	*len)
 	return (min_index);
 }
 
-int	get_current_pos(int	*arr, int	arr_size, int	val)
+int	get_current_pos(int *arr, int arr_size, int val)
 {
 	int	pos;
 
@@ -60,7 +60,7 @@ int	get_current_pos(int	*arr, int	arr_size, int	val)
 	return (0);
 }
 
-int	count_steps_to_top(int	*arr, int	arr_size, int	val)
+int	count_steps(int *arr, int arr_size, int val)
 {
 	int	pos;
 	int	rpos;
@@ -72,7 +72,7 @@ int	count_steps_to_top(int	*arr, int	arr_size, int	val)
 	return (rpos);
 }
 
-int	find_closest_big(int *arr, int *a_len, int val)
+int	find_big(int *arr, int *a_len, int val)
 {
 	int	max;
 	int	i;

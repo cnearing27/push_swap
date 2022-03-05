@@ -6,13 +6,13 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:44 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:19:45 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/04 20:27:23 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_sa(int	*arr, int	*n, t_list **solution, char	*op)
+void	do_sa(int	*arr, int	*n, char	*op)
 {
 	int	temp;
 
@@ -22,12 +22,12 @@ void	do_sa(int	*arr, int	*n, t_list **solution, char	*op)
 	arr[0] = arr[1];
 	arr[1] = temp;
 	if (op)
-		ft_lstadd_back(solution, ft_lstnew(op));
+		ft_putstr(op);
 }
 
-void	do_ss(int	*a, int	*b, int	*a_len, int *b_len, t_list **solution)
+void	do_ss(int	*a, int	*b, int	*a_len, int *b_len)
 {
-	do_sa(a, a_len, solution, NULL);
-	do_sa(b, b_len, solution, NULL);
-	ft_lstadd_back(solution, ft_lstnew("ss"));
+	do_sa(a, a_len, NULL);
+	do_sa(b, b_len, NULL);
+	ft_putstr("ss");
 }

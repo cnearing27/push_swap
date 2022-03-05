@@ -6,13 +6,13 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 20:14:38 by marvin            #+#    #+#             */
-/*   Updated: 2022/03/04 19:20:22 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:24:03 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-char	*ft_strcpy(char *dest, char *src, int	i)
+char	*ft_strcpy(char *dest, char *src, int i)
 {
 	int	count;
 
@@ -64,13 +64,17 @@ char	*ft_strcat(char	*dest, char	*src)
 		j++;
 	}
 	ret[i] = '\0';
-	free(dest);
+	if (dest)
+		free(dest);
 	return (ret);
 }
 
 void	freee_int(int	**res)
 {
-	free(res[0]);
-	free(res[1]);
-	free(res);
+	if (res && res[0])
+		free(res[0]);
+	if (res && res[1])
+		free(res[1]);
+	if (res)
+		free(res);
 }

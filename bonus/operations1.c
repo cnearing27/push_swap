@@ -6,7 +6,7 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:20:10 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:20:11 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/05 13:29:43 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,40 @@
 
 int	*ppush(int *arr, int b, int *len)
 {
-	int *new_arr;
+	int	*new_arr;
+	int	i;
 
 	new_arr = malloc(sizeof(int) * (*len));
 	if (!new_arr)
 		return (NULL);
 	new_arr[0] = b;
-	int i = 1;
+	i = 1;
 	while (i < *len)
 	{
 		new_arr[i] = arr[i - 1];
 		i++;
 	}
-	free(arr);
+	if (arr)
+		free(arr);
 	return (new_arr);
 }
 
 int	*delete_first(int *arr, int *len)
 {
 	int	*new_arr;
+	int	i;
 
 	new_arr = malloc(sizeof(int) * (*len));
 	if (!new_arr)
 		return (NULL);
-	int i = *len;
+	i = *len;
 	while (i > 0)
 	{
 		new_arr[i - 1] = arr[i];
 		i--;
 	}
-	free(arr);
+	if (arr)
+		free(arr);
 	return (new_arr);
 }
 

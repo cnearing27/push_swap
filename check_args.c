@@ -6,7 +6,7 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:15 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:19:16 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/05 14:23:39 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	is_integer(char	*str)
 	return (1);
 }
 
-int	check_no_repeat(int	argc, int	arr[argc])
+int	check_no_repeat(int argc, int arr[argc])
 {
 	int	i;
 	int	j;
@@ -84,7 +84,7 @@ int	check_no_repeat(int	argc, int	arr[argc])
 	return (1);
 }
 
-int	check_args(int	argc, char	**argv, int	*arr)
+int	check_args(int argc, char	**argv, int	*arr)
 {
 	int				i;
 	int				j;

@@ -6,7 +6,7 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:20:05 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:20:06 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/05 13:28:56 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	do_ra(int *arr, int *len)
 {
-	int i = 0;
-	int	temp = arr[0];
+	int	i;
+	int	temp;
+
+	i = 0;
+	temp = arr[0];
 	if (!len)
 		return ;
 	if (*len == 1)
@@ -36,8 +39,11 @@ void	do_rr(int	**arr, int	*a_len, int *b_len)
 
 void	do_rra(int	*arr, int	*len)
 {
-	int i = *len - 1;
-	int	temp = arr[i];
+	int	i;
+	int	temp;
+
+	i = *len - 1;
+	temp = arr[i];
 	if (!len)
 		return ;
 	while (i > 0)

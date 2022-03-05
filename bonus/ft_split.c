@@ -6,13 +6,13 @@
 /*   By: cnearing <cnearing@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:20:25 by cnearing          #+#    #+#             */
-/*   Updated: 2022/03/04 19:20:26 by cnearing         ###   ########.fr       */
+/*   Updated: 2022/03/05 13:44:01 by cnearing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-char	*new_string(char	*s, char	c, int	i)
+char	*new_string(char	*s, char c, int i)
 {
 	int		j;
 	int		k;
@@ -45,10 +45,11 @@ void	freee(char	**res)
 		free(res[i]);
 		i++;
 	}
-	free(res);
+	if (res)
+		free(res);
 }
 
-void	ft_mal(char	**res, char	*s, char	c)
+void	ft_mal(char	**res, char	*s, char c)
 {
 	int		k;
 	int		i;
@@ -77,7 +78,7 @@ void	ft_mal(char	**res, char	*s, char	c)
 	res[i] = NULL;
 }
 
-char	**ft_split(char	*s, char	c)
+char	**ft_split(char	*s, char c)
 {
 	char	**res;
 	int		k;
@@ -99,7 +100,7 @@ char	**ft_split(char	*s, char	c)
 		}
 	}
 	res = (char **)malloc(sizeof(char *) * (count_arr + 1));
-	ft_mal(res,s, c);
+	ft_mal(res, s, c);
 	if (!res)
 		return (NULL);
 	return (res);
